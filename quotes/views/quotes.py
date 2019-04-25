@@ -1,10 +1,13 @@
-import json
 import random
+from itertools import groupby
+from operator import attrgetter
+
 import transaction
 
 from pyramid.view import view_config
 from quote_lib.quote import get_quotes, get_quote, QuoteNotFound, NoDigitException
 from ..models import SessionModel
+
 
 @view_config(route_name='quotes', renderer='../templates/quotes.jinja2')
 def quotes(request):
@@ -32,9 +35,12 @@ def random_view(request):
     quote = get_quote(id_quote)
     return locals()
 
+
 @view_config(route_name='requests', renderer='json')
 def requests(request):
-    requests = {}
     with transaction.manager:
         requests = request.dbsession.query(SessionModel).all()
-    return {'requests': [request.to_json() for request in requests]}
+        groupby_identifier = groupby(requests, key=attrgetter('identifier'))
+        requests_dict = {identifier: list(map(SessionModel.to_json, row)) for identifier, row in groupby_identifier}
+
+    return {'total_request': len(requests), 'total_sessions': len(requests_dict), 'requests': requests_dict}

@@ -39,4 +39,4 @@ class SessionModel(Base):
                 'page': self.page}
 
 Index('my_index', MyModel.name, unique=True, mysql_length=255)
-Index('my_session_index', SessionModel.identifier, unique=True, mysql_length=255)
+Index('my_session_index', SessionModel.id, unique=True, mysql_length=255)

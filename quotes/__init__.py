@@ -1,8 +1,6 @@
 from pyramid.config import Configurator
-from pyramid.request import Request
 from pyramid.session import SignedCookieSessionFactory
-from datetime import date, datetime
-import transaction
+from datetime import datetime
 
 from .models import SessionModel
 

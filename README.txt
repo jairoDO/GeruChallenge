@@ -4,7 +4,7 @@ quotes README
 Getting Started
 ---------------
 
-- cd <directory containing this file>
+- cd quotes
 
 - $VENV/bin/pip install -e .
 
