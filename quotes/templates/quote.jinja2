@@ -1,0 +1,27 @@
+{% extends 'layout.jinja2' %}
+{% block title %} Web Challenge 1.0 {% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb t">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Quote</li>
+  </ol>
+</nav>
+<h1>Web Challenge 1.0</h1>
+{% if error is defined %}
+    {% if no_found is defined %}
+        <div class="alert alert-danger" role="alert">
+            The quote with number <b>{{ id_quote }} </b>it wasn't found
+        </div>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            <b>{{ id_quote }} </b> is no a number
+        </div>
+    {% endif%}
+{% else %}
+    <div class="alert alert-success " role="alert">
+        <p class="text-primary"> <b>{{ id_quote }} </b>  - {{ quote.quote }} </p>
+        </div>
+{% endif %}
+{% endblock %}

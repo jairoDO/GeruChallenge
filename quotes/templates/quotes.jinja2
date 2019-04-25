@@ -1,0 +1,21 @@
+{% extends 'layout.jinja2' %}
+{% block title %}
+    Web Challenge 1.0 - quotes
+{% endblock %}
+
+{% block content %}
+<h1>Web Challenge 1.0</h1>
+
+<nav aria-label="breadcrumb t">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Quotes</li>
+  </ol>
+</nav>
+
+<ol start="0">
+    {% for quote in quotes %}
+        <li> {{ quote }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}

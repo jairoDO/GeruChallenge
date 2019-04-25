@@ -1,0 +1,16 @@
+{% extends 'layout.jinja2' %}
+{% block title %} Web Challenge 1.0 {% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb t">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Random</li>
+  </ol>
+</nav>
+<h1>Web Challenge 1.0</h1>
+
+<div class="alert alert-success " role="alert">
+    <p class="text-primary"> <b>{{ id_quote }} </b>  - {{ quote.quote }} </p>
+</div>
+{% endblock %}
